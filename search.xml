@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[杂谈]]></title>
+    <url>%2F2019%2F03%2F08%2F%E6%9D%82%E8%B0%88%2F</url>
+    <content type="text"><![CDATA[在利用 Hexo 框架搭建一个属于我们自己的博客网站后，下面我们就来谈谈怎样在网站上书写我们的第一篇博客吧 一、创建文章在站点文件夹中打开 git bash，输入如下命令创建文章，其中 title 为文章的标题 $ hexo new “title”1当输入命令后，就会在 source/_post 文件夹下创建一个文件，命名为：title.md 这个文件就是将要发布到网站上的原始文件，用于记录文章内容 下面，我们将要在这个文件中写下我们的第一篇博客二、编写文章（基于 Markdown）1、Markdown 简介但是，在我们正式写下第一个文字前，我们需要了解一下究竟什么是 Markdown？ Markdown 是一种可以使用普通文本编辑器编写的 标记语言，通过简单的 标记语法，它可以使普通文本内容具有一定的格式 基于 Markdown 语法的简洁性，它已经成为目前世界上最流行的用于书写博客的语言 2、Markdown 语法在编写 Markdown 时，博主强烈的推荐给大家一款简洁易用的 Markdown 编辑器 —— Typora 按照官方的说法就是 简单而强大，它不仅支持原生的语法，也支持对应的快捷键，更重要的是它还可以 实时预览 这里附上 Typora 的下载地址：https://www.typora.io/，有兴趣的朋友可以下载来试试 好，下面开始进入正题，介绍一些常用的 Markdown 语法 （1）标题Markdown 语法： 一级标题二级标题三级标题四级标题五级标题六级标题123456Typora 快捷键： Ctrl+1：一级标题 Ctrl+2：二级标题 Ctrl+3：三级标题 Ctrl+4：四级标题 Ctrl+5：五级标题 Ctrl+6 ：六级标题 Ctrl+0：段落 （2）粗体、斜体、删除线和下划线Markdown 语法： 斜体粗体加粗斜体删除线1234Typora 快捷键： Ctrl+I：斜体 Ctrl+B：粗体 Ctrl+U：下划线 Alt+Shift+5：删除线 （3）引用块Markdown 语法： 文字引用1Typora 快捷键： Ctrl+Shift+Q （4）代码块Markdown 语法： 行内代码 ​123多行代码多行代码​ 123456Typora 快捷键： 行内代码：Ctrl+Shift+` 多行代码：Ctrl+Shift+K （5）公式块Markdown 语法： $$数学公式$$123Typora 快捷键： Ctrl+Shift+M （6）分割线Markdown 语法： 方法一：— 方法二：+++ 方法三：***12345（7）列表Markdown 语法： 有序列表项 无序列表项 无序列表项 无序列表项1234567Typora 快捷键： 有序列表项：Ctrl+Shift+[ 无序列表项：Ctrl+Shift+] （8）表格Markdown 语法： 表头1 表头2 内容11 内容12 内容21 内容22 1234Typora 快捷键： Ctrl+T （9）超链接Markdown语法： 方法一：链接文字例如：示例链接 方法二：&lt;链接地址&gt;例如：https://www.example.com/12345Typora快捷键： Ctrl+K （10）图片Markdown语法： 例如：12Typora快捷键： Ctrl+Shift+I 说明：在 Hexo中 插入图片时，请按照以下的步骤进行设置 将 站点配置文件 中的 post_asset_folde 选项的值设置为 true 在站点文件夹中打开 git bash，输入命令 npm install hexo-asset-image –save 安装插件 这样，当使用 hexo new title 创建文章时，将同时在 source/_post 文件夹中生成一个与 title 同名的文件夹，我们只需将图片放进此文件夹中，然后在文章中通过 Markdown 语法进行引用即可 例如，在资源文件夹（就是那个与 title 同名的文件夹）中添加图片 example.PNG，则可以在对应的文章中使用语句 添加图片 3、高级设置（1）模板设置当我们使用命令 hexo new “title” 创建文章时，Hexo 会根据 /scaffolds/post.md 对新文章进行初始化 换言之，/scaffolds/post.md 就是新文章的 模板，所以我们可以修改它来适应自己的写作习惯 一个简单的示例如下： title: 杂谈date: 1552053260000tags:categories:1234（2）头部设置在每篇利用 Hexo 创建的文章的开头，都会有对文章进行说明的文字，叫做 文章头部 文章的头部除了可以设置文章标题、发布日期等基础信息外，还可以为文章添加标签、分类等 一个简单的示例如下： title: Titledate: YYYY-MM-DD HH:MM:SStags: [tag1, tag2, …]categories: category1234注意：属性和属性值之间必须有一个空格，否则会解析错误 （3）首页显示在利用 Hexo 框架搭建的博客网站中，首页会显示文章的内容，且默认显示文章的全部内容 如果当文章太长的时候就会显得十分冗余，所以我们有必要对其进行精简 这时，我们只需在文章中使用 标志即可，表示只会显示标志前面的内容 三、部署发布在站点文件夹中打开 git bash，输入如下命令部署和发布文章 $ hexo g -d1建议：在使用 hexo g 部署之后，可以先使用 hexo s 运行本地站点，然后在浏览器输入地址 http://lacolhost:4000/ 查看运行结果，检查无误后再使用 hexo d 发布 【Hexo系列相关文章】 Hexo系列(一) 搭建博客网站 Hexo系列(二) 配置文件详解 Hexo系列(三) 常用命令详解 Hexo系列(四) NexT主题配置 Hexo系列(五) 撰写文章 作者：wsmrzx来源：CSDN原文：https://blog.csdn.net/wsmrzx/article/details/81478945版权声明：本文为博主原创文章，转载请附上博文链接！]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Hello World]]></title>
     <url>%2F2019%2F03%2F04%2Fhello-world%2F</url>
     <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
