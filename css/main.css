@@ -1250,7 +1250,7 @@ pre .javascript .function {
 .menu .menu-item a,
 .menu .menu-item span.exturl {
   display: block;
-  font-size: 16px;
+  font-size: 13px;
   line-height: inherit;
   border-bottom: 1px solid transparent;
   transition-property: border-color;
@@ -1998,7 +1998,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #791fff;
+  background: #14c87f;
 }
 .links-of-blogroll {
   font-size: 13px;
