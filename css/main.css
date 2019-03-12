@@ -1998,7 +1998,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #c2ff8f;
+  background: #a1586b;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2641,6 +2641,10 @@ hr {
 .main-inner {
   margin-top: 80px;
 }
+.header {
+background
+  height: 200px;
+}
 .header-inner {
   padding: 25px 0 20px;
 }
@@ -2965,4 +2969,7 @@ hr {
 }
 .header {
   background: url("../image/bg.jpg");
+}
+.header-inner {
+  height: 130px;
 }
