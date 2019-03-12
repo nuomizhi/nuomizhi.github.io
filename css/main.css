@@ -1998,7 +1998,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #a1586b;
+  background: #d55e9d;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2971,5 +2971,12 @@ background
   background: url("../image/bg.jpg");
 }
 .header-inner {
-  height: 130px;
+  height: 86px;
+}
+.menu {
+  margin: 20px 0 0 0;
+}
+.site-meta {
+  margin: 11px;
+  text-align: left;
 }
