@@ -368,10 +368,165 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/16/hexo之同时部署github与coding/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小糯同学">
+      <meta itemprop="description" content="stay crazy">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xiaonuoban">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/16/hexo之同时部署github与coding/" class="post-title-link" itemprop="url">hexo之同时部署github与coding</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-16 15:41:00 / 修改时间：16:21:13" itemprop="dateCreated datePublished" datetime="2019-03-16T15:41:00+08:00">2019-03-16</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="/2019/03/16/hexo之同时部署github与coding/timg.jpg" alt></p>
+<pre><code>偶然了解到国内还有个叫coding的东西，由于github是国外的网站，所以访问速度有时真的令人爪机，并且偶尔还会被墙，所以决定还是把博客重新再部署到coding上。
+</code></pre><p>​    对于coding的博客搭建，只要在github上搭建过静态博客，相信再在coding上搭博客也是很简单的事情，主要的是怎么在git上使用命令  hexo  d 时同时把文章同时发布在两个网站上。</p>
+<p>​    话不多说，有问题，先去官方文档瞧瞧再说</p>
+<p>传送门    </p>
+<p>打开我们可以翻一翻，英文有点蹩脚，不过还是可以找到这一部分</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">您可同时使用多个 deployer，Hexo 会依照顺序执行每个 deployer。</span><br><span class="line"></span><br><span class="line">deploy:</span><br><span class="line">- type: git</span><br><span class="line">  repo:</span><br><span class="line">- type: heroku</span><br><span class="line">  repo:</span><br></pre></td></tr></table></figure>
+<p>就是说部署多个仓库的话，只要按照上面的格式部署，是可以添加多个仓库的</p>
+<p>在网站配置文件_confing.yml上 deploy上加上以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  - type: git</span><br><span class="line">    repo: https://git.dev.tencent.com/xiaonuoban/xiaonuoban.git</span><br><span class="line">    branch: master</span><br><span class="line">  - type: git</span><br><span class="line">    repo: https://github.com/nuomizhi/xiaonuoban.github.io.git</span><br><span class="line">    branch: master</span><br></pre></td></tr></table></figure>
+<p>其中repo后面是你自己仓库的地址</p>
+<p>其中得注意下缩进的问题，如果部署时出现报错信息，很有可能你缩进有问题</p>
+<p>这样的话我们每次部署时就会同时把文章发布在两个网站上</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/11/markdowm基础用法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Xiao Nuoban">
+      <meta itemprop="name" content="小糯同学">
       <meta itemprop="description" content="stay crazy">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -535,7 +690,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/04/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Xiao Nuoban">
+      <meta itemprop="name" content="小糯同学">
       <meta itemprop="description" content="stay crazy">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -711,9 +866,9 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Xiao Nuoban">
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="小糯同学">
             
-              <p class="site-author-name" itemprop="name">Xiao Nuoban</p>
+              <p class="site-author-name" itemprop="name">小糯同学</p>
               <div class="site-description motion-element" itemprop="description">stay crazy</div>
           </div>
 
@@ -724,7 +879,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -745,7 +900,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -789,7 +946,7 @@
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Xiao Nuoban</span>
+  <span class="author" itemprop="copyrightHolder">小糯同学</span>
 
   
 
