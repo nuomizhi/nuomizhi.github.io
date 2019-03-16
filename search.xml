@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[markdowm之首行缩进问题]]></title>
+    <url>%2F2019%2F03%2F16%2Fmarkdowm%E4%B9%8B%E9%A6%96%E8%A1%8C%E7%BC%A9%E8%BF%9B%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[hexo next主题描述出现乱码之谜]]></title>
+    <url>%2F2019%2F03%2F16%2Fhexo-next%E4%B8%BB%E9%A2%98%E6%8F%8F%E8%BF%B0%E5%87%BA%E7%8E%B0%E4%B9%B1%E7%A0%81%E4%B9%8B%E8%B0%9C%2F</url>
+    <content type="text"></content>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[hexo之同时部署github与coding]]></title>
     <url>%2F2019%2F03%2F16%2Fhexo%E4%B9%8B%E5%90%8C%E6%97%B6%E9%83%A8%E7%BD%B2github%E4%B8%8Ecoding%2F</url>
     <content type="text"><![CDATA[&emsp;&emsp;偶然了解到国内还有个叫coding的东西，由于github是国外的网站，所以访问速度有时真的令人爪机，并且偶尔还会被墙，所以决定还是把博客重新再部署到coding上。 &emsp;&emsp;对于coding的博客搭建，只要在github上搭建过静态博客，相信再在coding上搭博客也是很简单的事情，主要的是怎么在git上使用命令 hexo d 时同时把文章同时发布在两个网站上。 话不多说，有问题，先去官方文档瞧瞧再说 传送门 打开我们可以翻一翻，英文有点蹩脚，不过还是可以找到这一部分 1234567您可同时使用多个 deployer，Hexo 会依照顺序执行每个 deployer。deploy:- type: git repo:- type: heroku repo: 就是说部署多个仓库的话，只要按照上面的格式部署，是可以添加多个仓库的 在网站配置文件_confing.yml上 deploy上加上以下代码： 1234567deploy: - type: git repo: https://git.dev.tencent.com/xiaonuoban/xiaonuoban.git branch: master - type: git repo: https://github.com/nuomizhi/xiaonuoban.github.io.git branch: master 其中repo后面是你自己仓库的地址 其中得注意下缩进的问题，如果部署时出现报错信息，很有可能你缩进有问题 这样的话我们每次部署时就会同时把文章发布在两个网站上]]></content>
