@@ -3,12 +3,15 @@
   <entry>
     <title><![CDATA[markdowm之首行缩进问题]]></title>
     <url>%2F2019%2F03%2F16%2Fmarkdowm%E4%B9%8B%E9%A6%96%E8%A1%8C%E7%BC%A9%E8%BF%9B%E9%97%AE%E9%A2%98%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[&emsp;&emsp;首先百度了下，markdowm这玩意会把空格给忽略，导致在编写文章时，明明本地排版还勉强过得去，段落缩进，错落有致。然而一放到网站时，发现首行的空格全给跑了，这就很尴尬了，看的很难受。&emsp;&emsp;这时只需要在本地编写文章时在需要缩进的地方加上 空格占位符123如&amp;nbsp;&amp;emsp; 注意空格，就行]]></content>
+      <tags>
+        <tag>MarkDown</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[hexo next主题描述出现乱码之谜]]></title>
     <url>%2F2019%2F03%2F16%2Fhexo-next%E4%B8%BB%E9%A2%98%E6%8F%8F%E8%BF%B0%E5%87%BA%E7%8E%B0%E4%B9%B1%E7%A0%81%E4%B9%8B%E8%B0%9C%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[&emsp;&emsp;你可能还是还会有一脸懵逼明明自己在站点配置文件中把语言给设置为中文了，为什么在站点配置时还是会出现中文乱码问题，如下我站点描述信息加上中文时 然后经过生成，再放到本地页面展示时还是会出现乱码。 &emsp;&emsp;此时应该考虑下是不是本身文件编码的问题，要知道编码方式可是有挺多种的，只需把站点配置文件编码方式改成utf-8等支持中文的编码方式则行，比如你打开文件时选择另存为文件，如下选择编码方式保存 此时再打开生成就不会再出现乱码问题]]></content>
       <tags>
         <tag>hexo</tag>
       </tags>
