@@ -127,7 +127,273 @@
 </script>
 
   <title>hexo之同时部署github与coding | Xiaonuoban</title>
-  
+  <style>
+    * {
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    #father {
+        margin-top: 60px;
+        /* position: relative; */
+    }
+
+    #container {
+        width: 800px;
+        height: 500px;
+        /* margin-top: 60px; */
+        /* background: aqua; */
+        overflow: hidden;
+        /*关键，把超过的部分给隐藏*/
+        position: relative;
+        /*关键，把父亲设为相对定位，为下面滑动条做参考*/
+    }
+
+    /* 轮播图 */
+    #list {
+        height: 100%;
+        width: 6400px;
+        position: absolute;
+        left: -800px;
+    }
+
+    img {
+        border-radius: 5px;
+        /* box-shadow: 10px 10px 10px 10px cyan;  */
+        width: 800px;
+        float: left;
+    }
+    /* img:hover {
+        background-color: #808083;
+    } */
+
+    #buttons {
+        position: absolute;
+        right: 50%;
+        bottom: 20px;
+        margin-right: -150px;
+        /*实现垂直居中*/
+        height: 40px;
+        /* 不设宽度。让其孩子自己撑开 */
+        /* height: 200px; */
+    }
+
+    #buttons div {
+        float: left;
+        margin: 0 5px;
+        background: rgba(255, 255, 255,0.6);
+        width: 40px;
+        height: 100%;
+        border-radius: 20px;
+        text-align: center;
+        line-height: 40px;
+        transition: background 1s;
+    }
+
+    #buttons .on {
+        /*当前被选中的焦点图*/
+        background: rgba(146, 194, 240, 0.9);
+    }
+
+    #buttons div:hover {
+        background: rgba(146, 194, 240, 0.9);
+    }
+
+    /* 左右箭头 */
+    #arrow {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        /* background-color: #fff; */
+    }
+
+    #arrow div {
+        height: 100%;
+        line-height: 500px;
+        /* margin: auto 0; */
+        color: white;
+        font-size: 30px;
+        font-weight: 500;
+        width: 10%;
+        text-align: center;
+        opacity: 0;
+        /* background: darkblue; */
+        transition: opacity 1s,background 0.8s;
+    }
+
+    #arrow div:hover {
+        opacity: 1;
+        background: rgba(215, 229, 241, 0.6);
+    }
+
+    #prev {
+        float: left;
+        top: 50%;
+    }
+
+    #next {
+        float: right;
+        top: 50%;
+    }
+</style>
+
+<script>
+    var list, prev, next, container, buttons;
+    var index = 1;  //记录当前为第几个孩子,用来设置下面焦点图,默认为第一个孩子
+    var animation = false;
+    var cleartime;
+
+    window.onload = function () {
+
+        list = document.getElementById('list');
+        prev = document.getElementById('prev');
+        next = document.getElementById('next');
+        container = document.getElementById('container');
+        buttons = document.getElementById("buttons").children;
+
+
+        //自动轮播,4秒执行一次
+        cleartime = setInterval(function () {
+            if (animation == false) {
+                console.log("开始")
+                index++;
+                controllLeftRight(-800);
+            }
+
+        }, 6000)
+
+        // 箭头左右控制图片
+        prev.onclick = function () {
+            if (animation == false) {
+                index--;
+                controllLeftRight(800);      //前一张,加800
+            }
+        }
+        next.onclick = function () {
+            if (animation == false) {
+                index++;
+                controllLeftRight(-800);     //后一张减去800
+            }
+        }
+        var hover_wait;
+        //鼠标经过和离开暂停和重启定时器
+        container.onmouseenter = function () {      //鼠标经过时停止定时器
+            hover_wait = setInterval(function(){
+                if (animation == false) {
+                    clearInterval(hover_wait);
+                    console.log('鼠标经过了');
+                    clearInterval(cleartime);
+                    console.log('清除定时器了');
+                }
+            })
+            
+        }
+        container.onmouseleave = function () {
+            clearInterval(hover_wait);
+            if (animation == false) {
+                // alert('重启了');
+                console.log('鼠标移开了');
+                cleartime = setInterval(function () {     //鼠标离开时重开定时器
+                    if (animation == false) {
+                        console.log("开始")     //执行左右动画时，同时计时器也在计时
+                        index++;
+                        controllLeftRight(-800);
+                    }
+                }, 6000)
+            }
+        }
+
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].onclick = function () {
+                if (this.className == "ok") {     //如果点的焦点刚刚好为正再轮播的图,则空操作
+                    return;
+                }
+                if (animation == false) {
+                    animation = true;
+                    // clearInterval(cleartime); //点之前先清空计时器
+                    var newindex = parseInt(this.innerHTML);
+                    var offset = -800 * (newindex - index);
+                    index = newindex;
+                    controllLeftRight(offset);
+                    // cleartime = setInterval(function () {     //点之后重开定时器
+                    //         index++;
+                    //         controllLeftRight(-800);
+                    //     }, 4000)
+                }
+            };
+        }
+    }
+
+//动画函数
+    function controllLeftRight(offset) {
+        animation = true;
+        //执行间隔时间越短,份数越大越流畅
+        var speed = offset / 20;      //目测把速度分成40份，加20速度最合适; 
+        var new_left = parseInt(list.style.left) + offset;
+        console.log(new_left + "..." + parseInt(list.style.left))
+        function go() {
+            // clearInterval(cleartime);  加上缓冲动画
+            if ((speed < 0 && parseInt(list.style.left) > new_left) || (speed > 0 && parseInt(list.style.left) < new_left)) {
+                console.log("移动中");
+                // console.log("移动中"+new_left+"..."+parseInt(list.style.left));
+                speed =  (new_left-parseInt(list.style.left))/20
+                //大于0向上取整，小于0向下取整
+                speed = speed>0?Math.ceil(speed):Math.floor(speed);
+                if((speed <0 && parseInt(list.style.left) > new_left) || (speed>0 && parseInt(list.style.left) < new_left)){
+                    list.style.left = parseInt(list.style.left) + speed + "px";
+                    
+                }else{
+                    console.log("越界了"+speed)
+                    list.style.left = new_left + "px";  //保证不越界，即发生错位
+                }
+
+            }
+            else {
+                clearInterval(time);
+                //当滚动到尾部时候,先判断是否为插到尾部的第一张图片,如果是先平缓过渡到第一张,然后迅速切换到头部的第一张
+                // list.style.left = parseInt(list.style.left) + offset + "px";        //此处还得封装一个滚动图片方法
+                var newleft = parseInt(list.style.left)
+                //处理index
+                if (index > 6) {
+                    index = 1;
+                }
+                if (index < 1) {
+                    index = 6;
+                }
+                showButton();
+                // alert(newleft)
+                if (newleft <= -5600) {
+                    list.style.left = "-800px";
+                }
+                if (newleft >= 0) {
+                    list.style.left = "-4800px";
+                }
+                animation = false;  //动画结束
+                console.log("结束")
+            }
+
+        }
+        var time = setInterval(function () {
+            go();
+        }, 20)
+
+
+    }
+
+    //用来切换焦点图的颜色
+    function showButton() {
+        // var buttons = document.getElementById("buttons").children;
+        //先把所有buttons设置为一般样式,注意选中样式为on
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].className = "";
+        }
+        buttons[index - 1].className = "on"
+
+    }
+
+</script>
 
 
 
@@ -462,7 +728,38 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
+      <div id="father">
+        <div id="container">
+            <!-- 父亲相对定位，儿子绝对定位，再里面设置浮动， -->
+            <div id="list" style="left: -800px">
+                <img src="slider_img/6.jpg" alt="">
+                <img src="slider_img/1.jpg" alt="">
+                <img src="slider_img/2.jpg" alt="">
+                <img src="slider_img/3.jpg" alt="">
+                <img src="slider_img/4.jpg" alt="">
+                <img src="slider_img/5.jpg" alt="">
+                <img src="slider_img/6.jpg" alt="">
+                <img src="slider_img/1.jpg" alt="">
+
+            </div>
+            <div id="arrow">
+                <div id="prev"><</div> <!-- 上一张-->
+                <div id="next">></div> <!-- 上一张-->
+
+            </div>
+                <!-- 底下按钮和箭头 -->
+                <div id="buttons">
+                    <div class="on">1</div>
+                    <div>2</div>
+                    <div>3</div>
+                    <div>4</div>
+                    <div>5</div>
+                    <div>6</div>
+                </div>
+            </div>
+
+
+        </div>
 
       
         <p><img src="/2019/03/16/hexo之同时部署github与coding/timg.jpg" alt></p>
